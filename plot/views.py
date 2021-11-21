@@ -6,9 +6,9 @@ import os
 
 # Create your views here.
 
-CURRENT_DIR = os.path.dirname(__file__)
-model_file = os.path.join(
-    CURRENT_DIR, 'static/output.png')
+# CURRENT_DIR = os.path.dirname(__file__)
+# model_file = os.path.join(
+#     CURRENT_DIR, 'static/output.png')
 
 
 def plot(request):
