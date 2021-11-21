@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Area Under the Curve</title>
+</head>
+
+<body>
+
+    <section id='contact'>
+        <div class="container-lg">
+            <div class="text-center">
+                <h2>Find Area Under the Curve</h2>
+                <p class="lead">Questions to ask ? Fill out the form to contact me directly...</p>
+            </div>
+            <div class="row justify-content-center my-5">
+                <div class="col-lg-6">
+                    <form  method="post">{% csrf_token %}
+
+                        {% for field in form %}
+
+                        <select name="" id="subject" class="form-control">
+                            <option value="pricing" selected>Price</option>
+                            <option value="content">Content</option>
+                            <option value="other">Other</option>
+                        </select>
+
+                        <label for="name" class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        <input type="text" name="" id="function" class="form-control" placeholder="x**2">
+
+                        <label for="name" class="form-label">Start</label>
+                        <input type="text" name="" id="start" class="form-control" placeholder="inf">
+
+                        <label for="name" class="form-label">End</label>
+                        <input type="text" name="" id="end" class="form-control" placeholder="inf">
+                
+                        <label for="name" class="form-label">Split</label>
+                        <input type="text" name="" id="split" class="form-control" placeholder="0-inf">
+                
+                        <div class="mt-4 text-center">
+                            <button type="submit" class="btn btn-secondary">Calculate</button>
+                        </div>
+
+                        {% endfor %}
+                    </form>
+                </div>
+            </div>
+
+            
+        </div>
+
+    </section>
+    <section>
+        {% if figure %}
+        <img src="../../static/images/output.png" alt="not found" width="1000px">
+        {% endif %}
+    </section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
+
+
+
+
+
+<form class="form-horizontal" method="post">{% csrf_token %}
+    <fieldset>
+        <legend>{{ title }}</legend>
+        {% for field in form %}
+        {% if field.errors %}
+        <div class="control-group error">
+            <label class="control-label">{{ field.label }}</label>
+            <div class="controls">{{ field }}
+                <span class="help-inline">
+                    {% for error in field.errors %}{{ error }}{% endfor %}
+                </span>
+            </div>
+        </div>
+        {% else %}
+        <div class="control-group">
+            <label class="control-label">{{ field.label }}</label>
+            <div class="controls">{{ field }}
+                {% if field.help_text %}
+                <p class="help-inline"><small>{{ field.help_text }}</small></p>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </fieldset>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
