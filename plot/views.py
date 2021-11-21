@@ -2,8 +2,13 @@ from django.shortcuts import render, redirect
 from plot.models import Plot
 from .forms import PlotForm
 from .math import *
+import os
 
 # Create your views here.
+
+CURRENT_DIR = os.path.dirname(__file__)
+model_file = os.path.join(
+    CURRENT_DIR, 'static/output.png')
 
 
 def plot(request):
