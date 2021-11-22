@@ -42,7 +42,7 @@ def trapezoid(function, start, end, split):
     for i in range(1, split+1):
         plots = plt.fill_between([ar[i-1], ar[i]], [y_v[i-1], y_v[i]])
     plots = plt.title('Trapezoid Rule gives:  '+str(sum(area_of_split)))
-    plt.savefig("plot/static/output.png")
+    plt.savefig("static/output.png")
 
     plt.close()
     return
@@ -84,7 +84,7 @@ def midpoint(function, start, end, split):
     for i in range(split):
         plots = plt.bar(midpoint[i], y_v[i], width=x_dist)
     plots = plt.title('Midpoint Rule gives:  '+str(sum(area_of_split)))
-    plt.savefig("plot/static/output.png")
+    plt.savefig("static/output.png")
 
     plt.close()
     return
@@ -137,7 +137,7 @@ def simpson(function, start, end, split):
 
     plots = plt.fill_between(arr, y_val, np.max(y_val), color='w')
     plots = plt.title('Simpson Rule gives:  '+str(t_area))
-    plt.savefig("plot/static/output.png")
+    plt.savefig("static/output.png")
 
     plt.close()
 
